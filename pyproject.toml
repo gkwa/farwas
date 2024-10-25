@@ -15,25 +15,3 @@ dependencies = [
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 python_files = ["test_*.py"]
-addopts = "-v --cov=farwas --cov-report=xml"
-
-[tool.coverage.run]
-source = ["farwas"]
-branch = true
-
-[tool.coverage.report]
-exclude_lines = [
-    "pragma: no cover",
-    "def __repr__",
-    "if self.debug:",
-    "raise NotImplementedError",
-    "if __name__ == .__main__.:",
-    "pass",
-    "raise ImportError",
-]
-ignore_errors = true
-omit = [
-    "tests/*",
-    "setup.py",
-]
-

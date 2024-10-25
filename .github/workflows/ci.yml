@@ -24,7 +24,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        python -m pip install pytest pytest-cov
+        python -m pip install pytest
         python -m pip install -e .
         
     - name: List installed packages and structure
@@ -33,28 +33,9 @@ jobs:
         echo "Directory structure:"
         ls -R
         
-    - name: Run tests with pytest
+    - name: Run tests
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        python -m pytest tests/ -v --cov=farwas --cov-report=xml --no-cov-on-fail
-        
-    - name: Show test results
-      if: always()
-      run: |
-        if [ -f .coverage ]; then
-          echo "Coverage report:"
-          coverage report
-        fi
-        
-    - name: Upload coverage reports to Codecov
-      uses: codecov/codecov-action@v4
-      if: success()
-      env:
-        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-      with:
-        file: ./coverage.xml
-        fail_ci_if_error: true
-        flags: unittests
-        name: codecov-umbrella
-        verbose: true
+        python -m pytest tests/ -v
+

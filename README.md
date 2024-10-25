@@ -41,11 +41,16 @@ farwas --help
 - Cache can be configured with --cache-dir flag
 
 ## Example view4 output
+
+```bash
+farwas --limit 20 --org myorg view4
 ```
-failure      about 4 hours ago         https://github.com/org/repo1/actions
-failure      about 4 hours ago         https://github.com/org/repo2/actions
-success      about 4 hours ago         https://github.com/org/repo3/actions
-success      about 4 hours ago         https://github.com/org/repo4/actions
-no workflows about 9 minutes ago       https://github.com/org/repo5/actions
-no workflows about 1 hours ago         https://github.com/org/repo6/actions
+
+```
+failure      about 4 hours ago         https://github.com/myorg/repo1/actions
+failure      about 4 hours ago         https://github.com/myorg/repo2/actions
+success      about 4 hours ago         https://github.com/myorg/repo3/actions
+success      about 4 hours ago         https://github.com/myorg/repo4/actions
+no workflows about 9 minutes ago       https://github.com/myorg/repo5/actions
+no workflows about 1 hours ago         https://github.com/myorg/repo6/actions
 ```

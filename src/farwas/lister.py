@@ -5,9 +5,11 @@ from .auth import get_github_headers
 
 
 class GitHubRepoLister:
-    def __init__(self, token: str = None, cache_dir: str = None):
+    def __init__(
+        self, token: str = None, cache_dir: str = None, no_cache: bool = False
+    ):
         headers = get_github_headers(token)
-        self.api = GitHubAPI(headers)
+        self.api = GitHubAPI(headers, cache_dir=cache_dir, no_cache=no_cache)
 
     def _enrich_with_workflow_status(
         self, repos: typing.List[typing.Dict]

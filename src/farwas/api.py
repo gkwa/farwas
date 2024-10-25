@@ -9,18 +9,19 @@ from .cache import DiskCache
 
 
 class GitHubAPI:
-    def __init__(self, headers: dict):
+    def __init__(self, headers: dict, cache_dir: str = None, no_cache: bool = False):
         self.headers = headers
-        self.cache = DiskCache()
+        self.cache = None if no_cache else DiskCache(cache_dir)
 
     def _cache_key(self, url: str) -> str:
         return hashlib.sha256(url.encode()).hexdigest()
 
     def fetch_repos(self, url: str, limit: int) -> typing.List[typing.Dict]:
         cache_key = self._cache_key(url)
-        cached_data = self.cache.get(cache_key)
-        if cached_data:
-            return cached_data
+        if self.cache:
+            cached_data = self.cache.get(cache_key)
+            if cached_data:
+                return cached_data
 
         req = urllib.request.Request(url, headers=self.headers)
         with urllib.request.urlopen(req) as response:
@@ -52,15 +53,17 @@ class GitHubAPI:
             }
             result.append(repo_info)
 
-        self.cache.set(cache_key, result)
+        if self.cache:
+            self.cache.set(cache_key, result)
         return result
 
     def fetch_latest_workflow_status(self, repo_full_name: str) -> typing.Optional[str]:
         url = f"https://api.github.com/repos/{repo_full_name}/actions/runs?per_page=1"
         cache_key = self._cache_key(url)
-        cached_data = self.cache.get(cache_key)
-        if cached_data:
-            return cached_data
+        if self.cache:
+            cached_data = self.cache.get(cache_key)
+            if cached_data:
+                return cached_data
 
         try:
             req = urllib.request.Request(url, headers=self.headers)
@@ -69,7 +72,8 @@ class GitHubAPI:
 
             if data["total_count"] > 0:
                 status = data["workflow_runs"][0]["conclusion"] or "in_progress"
-                self.cache.set(cache_key, status)
+                if self.cache:
+                    self.cache.set(cache_key, status)
                 return status
             return None
         except Exception:

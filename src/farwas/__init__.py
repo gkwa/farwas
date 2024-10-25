@@ -5,7 +5,7 @@ from .lister import GitHubRepoLister
 
 def main() -> None:
     args = parse_args()
-    lister = GitHubRepoLister(cache_dir=args.cache_dir)
+    lister = GitHubRepoLister(cache_dir=args.cache_dir, no_cache=args.no_cache)
 
     if args.user:
         repos = lister.list_user_repos(args.user, args.limit, args.view)

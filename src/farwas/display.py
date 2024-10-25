@@ -73,8 +73,11 @@ def print_repos_view4(repos: typing.List[typing.Dict]) -> None:
         status = repo.get("workflow_status", "no workflows")
         status = status if status else "no workflows"
         updated = repo["updated"]
-        actions_url = f"https://github.com/{repo['name']}/actions"
-        print(f"{status:<12} {updated:<25} {actions_url}")
+        if status == "no workflows":
+            url = f"https://github.com/{repo['name']}"
+        else:
+            url = f"https://github.com/{repo['name']}/actions"
+        print(f"{status:<12} {updated:<25} {url}")
 
 
 def print_repos(repos: typing.List[typing.Dict], view: str = "view1") -> None:

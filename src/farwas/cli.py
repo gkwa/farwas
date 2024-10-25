@@ -18,6 +18,11 @@ def parse_args() -> argparse.Namespace:
         help="Directory to store cache files (default: ~/.farwas/cache)",
     )
     parser.add_argument(
+        "--no-cache",
+        action="store_true",
+        help="Disable caching of API requests",
+    )
+    parser.add_argument(
         "view",
         nargs="?",
         choices=["view1", "view2", "view3", "view4"],

@@ -1,8 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended"
-  ],
+  "extends": ["config:recommended"],
   "packageRules": [
     {
       "matchDepTypes": ["*"],
@@ -10,6 +8,25 @@
       "automergeType": "branch",
       "automergeStrategy": "fast-forward",
       "requiredStatusChecks": null
+    },
+    {
+      "description": "Python versions in GitHub Actions",
+      "matchPaths": [".github/workflows/ci.yml"],
+      "matchStrings": ["- \"3.[0-9]+\""],
+      "datasourceTemplate": "docker",
+      "depNameTemplate": "python",
+      "versioningTemplate": "pep440"
+    }
+  ],
+  "regexManagers": [
+    {
+      "fileMatch": ["^.github/workflows/ci\\.yml$"],
+      "matchStrings": [
+        "python-version:\\s*[\\s\\n]+(?<content>\\s+- \"[0-9]+\\.[0-9]+\"\\s+)+\\s+"
+      ],
+      "depNameTemplate": "python",
+      "datasourceTemplate": "docker",
+      "versioningTemplate": "pep440"
     }
   ],
   "platformAutomerge": true

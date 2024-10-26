@@ -14,11 +14,12 @@
     {
       "fileMatch": ["^\\.github/workflows/[^/]*\\.ya?ml$"],
       "matchStrings": [
-        "\\s+- \"(?<currentValue>\\d+\\.\\d+)\""
+        "python-version:\\n(?<content>\\s+- \"(?<currentValue>\\d+\\.\\d+)\"\\n)+"
       ],
       "depNameTemplate": "python",
       "datasourceTemplate": "docker",
-      "versioningTemplate": "pep440"
+      "versioningTemplate": "pep440",
+      "autoReplaceStringTemplate": "python-version:\n        - \"3.13\"\n        - \"3.12\"\n        - \"3.11\""
     }
   ],
   "separateMajorMinor": false,

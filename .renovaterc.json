@@ -13,13 +13,15 @@
   "regexManagers": [
     {
       "fileMatch": ["^\\.github/workflows/[^/]*\\.ya?ml$"],
+      "matchStringsStrategy": "any",
       "matchStrings": [
-        "python-version:\\n(?<content>\\s+- \"(?<currentValue>\\d+\\.\\d+)\"\\n)+"
+        "- \"(?<currentValue>3\\.9)\"",
+        "- \"(?<currentValue>3\\.10)\"",
+        "- \"(?<currentValue>3\\.11)\""
       ],
       "depNameTemplate": "python",
       "datasourceTemplate": "docker",
-      "versioningTemplate": "pep440",
-      "autoReplaceStringTemplate": "python-version:\n        - \"3.13\"\n        - \"3.12\"\n        - \"3.11\""
+      "versioningTemplate": "pep440"
     }
   ],
   "separateMajorMinor": false,

@@ -3,7 +3,7 @@
   "extends": ["config:recommended"],
   "packageRules": [
     {
-      "matchDepTypes": ["*"],
+      "matchDepTypes": [""],
       "automerge": true,
       "automergeType": "branch",
       "automergeStrategy": "fast-forward",
@@ -12,15 +12,20 @@
   ],
   "regexManagers": [
     {
-      "fileMatch": ["^\\.github/workflows/[^/]*\\.ya?ml$"],
-      "matchStringsStrategy": "line",
-      "matchStrings": ["- \"(?<currentValue>3\\.[0-9]+)\""],
+      "fileMatch": ["^\\.github/workflows/[^/]\\.ya?ml$"],
+      "matchStrings": [
+        "- \"(?<currentValue>\\d+\\.\\d+)\""
+      ],
       "depNameTemplate": "python",
       "datasourceTemplate": "docker",
-      "versioningTemplate": "pep440"
+      "versioningTemplate": "pep440",
+      "extractVersionTemplate": "^(?<version>\\d+\\.\\d+)$",
+      "depTypeTemplate": "final"
     }
   ],
   "separateMajorMinor": false,
-  "rangeStrategy": "replace",
+  "rangeStrategy": "bump",
   "platformAutomerge": true
 }
+
+

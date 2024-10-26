@@ -13,11 +13,8 @@
   "regexManagers": [
     {
       "fileMatch": ["^\\.github/workflows/[^/]*\\.ya?ml$"],
-      "matchStringsStrategy": "any",
-      "matchStrings": [
-        "python-version:\\s*(?:(?:-|\\n)\\s*-\\s*\"(?<currentValue>\\d+\\.\\d+)\"\\s*)+",
-        "- \"(?<currentValue>\\d+\\.\\d+)\""
-      ],
+      "matchStringsStrategy": "line",
+      "matchStrings": ["- \"(?<currentValue>3\\.[0-9]+)\""],
       "depNameTemplate": "python",
       "datasourceTemplate": "docker",
       "versioningTemplate": "pep440"

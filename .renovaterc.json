@@ -14,7 +14,7 @@
     {
       "fileMatch": ["^\\.github/workflows/[^/]*\\.ya?ml$"],
       "matchStrings": [
-        "python-version:[^]*?- \"(?<currentValue>\\d+\\.\\d+)\"([^]*?(\\d+\\.\\d+)[^]*?)*"
+        "\\s+- \"(?<currentValue>\\d+\\.\\d+)\""
       ],
       "depNameTemplate": "python",
       "datasourceTemplate": "docker",

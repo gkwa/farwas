@@ -9,12 +9,18 @@ authors = []
 description = "GitHub repository lister"
 requires-python = ">=3.9"
 dependencies = [
-    "zoneinfo; python_version < '3.9'"
+    "zoneinfo; python_version < '3.9'",
+    "tzdata; platform_system == 'Windows'"
 ]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 python_files = ["test_*.py"]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0"
+]
 
 [project.scripts]
 farwas = "farwas:main"

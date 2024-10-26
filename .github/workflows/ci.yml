@@ -42,7 +42,4 @@ jobs:
         ls -R
         
     - name: Run tests
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-        python -m pytest tests/ -v
+      run: python -m pytest tests/ -v

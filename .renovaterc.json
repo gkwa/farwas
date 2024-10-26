@@ -15,9 +15,8 @@
       "fileMatch": ["^\\.github/workflows/[^/]*\\.ya?ml$"],
       "matchStringsStrategy": "any",
       "matchStrings": [
-        "- \"(?<currentValue>3\\.9)\"",
-        "- \"(?<currentValue>3\\.10)\"",
-        "- \"(?<currentValue>3\\.11)\""
+        "python-version:\\s*(?:(?:-|\\n)\\s*-\\s*\"(?<currentValue>\\d+\\.\\d+)\"\\s*)+",
+        "- \"(?<currentValue>\\d+\\.\\d+)\""
       ],
       "depNameTemplate": "python",
       "datasourceTemplate": "docker",

@@ -12,7 +12,7 @@
     {
       "description": "Python versions in GitHub Actions",
       "matchPaths": [".github/workflows/ci.yml"],
-      "matchStrings": ["- \"3.[0-9]+\""],
+      "matchStrings": ["- \"(?<currentValue>3\\.[0-9]+)\""],
       "datasourceTemplate": "docker",
       "depNameTemplate": "python",
       "versioningTemplate": "pep440"
@@ -21,9 +21,7 @@
   "regexManagers": [
     {
       "fileMatch": ["^.github/workflows/ci\\.yml$"],
-      "matchStrings": [
-        "python-version:\\s*[\\s\\n]+(?<content>\\s+- \"(?<currentValue>\\d+\\.\\d+)\"\\s+)+\\s+"
-      ],
+      "matchStrings": ["python-version:[^]*?(?:- \"(?<currentValue>\\d+\\.\\d+)\"[^]*?)+"],
       "depNameTemplate": "python",
       "datasourceTemplate": "docker",
       "versioningTemplate": "pep440"

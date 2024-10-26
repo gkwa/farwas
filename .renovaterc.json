@@ -12,15 +12,18 @@
   ],
   "regexManagers": [
     {
-      "fileMatch": ["\\.github/workflows/[^/]*\\.ya?ml$"],
+      "fileMatch": ["^\\.github/workflows/[^/]*\\.ya?ml$"],
       "matchStrings": [
-        "\\s+- \"(?<currentValue>3\\.[0-9]+)\""
+        "- \"(?<currentValue>\\d+\\.\\d+)\""
       ],
-      "datasourceTemplate": "docker",
       "depNameTemplate": "python",
+      "datasourceTemplate": "docker",
       "versioningTemplate": "pep440",
-      "extractVersionTemplate": "^(?<version>\\d+\\.\\d+\\.\\d+)$"
+      "extractVersionTemplate": "^(?<version>\\d+\\.\\d+)$",
+      "depTypeTemplate": "final"
     }
   ],
+  "separateMajorMinor": false,
+  "rangeStrategy": "bump",
   "platformAutomerge": true
 }

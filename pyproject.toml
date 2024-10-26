@@ -15,3 +15,10 @@ dependencies = [
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 python_files = ["test_*.py"]
+
+[project.scripts]
+farwas = "farwas:main"
+
+[tool.ruff.lint]
+extend-select = ["I"]
+ 

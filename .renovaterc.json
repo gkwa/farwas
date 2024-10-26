@@ -5,7 +5,7 @@
  "packageRules": [
    {
      "matchDepTypes": ["*"],
-     "automerge": true,
+     "automerge": true, 
      "automergeType": "branch",
      "automergeStrategy": "fast-forward",
      "requiredStatusChecks": null
@@ -13,10 +13,10 @@
  ],
  "regexManagers": [
    {
-     "fileMatch": [".github/workflows/ci.yml"],
-     "matchStrings": ["- \"(?<currentValue>\\d+\\.\\d+(?:\\.\\d+)?)\""],
+     "fileMatch": ["\\.github/workflows/ci\\.yml"],
+     "matchStrings": ["- \\\"(?<currentValue>\\d+\\.\\d+(?:\\.\\d+)?)\\\""  ],
      "depNameTemplate": "python",
-     "datasourceTemplate": "docker",
+     "datasourceTemplate": "docker", 
      "versioningTemplate": "pep440",
      "extractVersionTemplate": "^(?<version>\\d+\\.\\d+(?:\\.\\d+)?)$",
      "depTypeTemplate": "final"

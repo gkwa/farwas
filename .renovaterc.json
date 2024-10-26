@@ -1,27 +1,28 @@
+-- .renovaterc.json --
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended"],
-  "packageRules": [
-    {
-      "matchDepTypes": ["*"],
-      "automerge": true,
-      "automergeType": "branch",
-      "automergeStrategy": "fast-forward",
-      "requiredStatusChecks": null
-    }
-  ],
-  "regexManagers": [
-    {
-      "fileMatch": [".github/workflows/ci.yml"],
-      "matchStrings": ["- \"(?<currentValue>\\d+\\.\\d+)\""],
-      "depNameTemplate": "python",
-      "datasourceTemplate": "docker",
-      "versioningTemplate": "pep440",
-      "extractVersionTemplate": "^(?<version>\\d+\\.\\d+)$",
-      "depTypeTemplate": "final"
-    }
-  ],
-  "separateMajorMinor": false,
-  "rangeStrategy": "bump",
-  "platformAutomerge": true
+ "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+ "extends": ["config:recommended"],
+ "packageRules": [
+   {
+     "matchDepTypes": ["*"],
+     "automerge": true,
+     "automergeType": "branch",
+     "automergeStrategy": "fast-forward",
+     "requiredStatusChecks": null
+   }
+ ],
+ "regexManagers": [
+   {
+     "fileMatch": [".github/workflows/ci.yml"],
+     "matchStrings": ["- \"(?<currentValue>\\d+\\.\\d+(?:\\.\\d+)?)\""],
+     "depNameTemplate": "python",
+     "datasourceTemplate": "docker",
+     "versioningTemplate": "pep440",
+     "extractVersionTemplate": "^(?<version>\\d+\\.\\d+(?:\\.\\d+)?)$",
+     "depTypeTemplate": "final"
+   }
+ ],
+ "separateMajorMinor": false,
+ "rangeStrategy": "bump",
+ "platformAutomerge": true
 }

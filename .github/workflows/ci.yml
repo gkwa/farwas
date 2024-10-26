@@ -8,10 +8,12 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
+        os: [ubuntu-latest, windows-latest]
         python-version: [3.9, "3.10", "3.11", "3.12"]
+      fail-fast: false
 
     steps:
     - uses: actions/checkout@v4
@@ -28,6 +30,7 @@ jobs:
         python -m pip install -e .
         
     - name: List installed packages and structure
+      shell: bash
       run: |
         pip list
         echo "Directory structure:"
@@ -38,4 +41,3 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         python -m pytest tests/ -v
-

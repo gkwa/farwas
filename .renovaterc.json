@@ -21,7 +21,9 @@
   "regexManagers": [
     {
       "fileMatch": ["^.github/workflows/ci\\.yml$"],
-      "matchStrings": ["python-version:[^]*?(?:- \"(?<currentValue>\\d+\\.\\d+)\"[^]*?)+"],
+      "matchStrings": [
+        "python-version:\\s*\\n(?:\\s+- \"(?<currentValue>\\d+\\.\\d+)\"\\n)*"
+      ],
       "depNameTemplate": "python",
       "datasourceTemplate": "docker",
       "versioningTemplate": "pep440"

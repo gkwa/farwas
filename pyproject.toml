@@ -19,7 +19,7 @@ python_files = ["test_*.py"]
 
 [project.optional-dependencies]
 dev = [
-    "pytest==8.0"
+    "pytest==8.3.3"
 ]
 
 [project.scripts]

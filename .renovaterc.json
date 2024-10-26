@@ -8,25 +8,18 @@
       "automergeType": "branch",
       "automergeStrategy": "fast-forward",
       "requiredStatusChecks": null
-    },
-    {
-      "description": "Python versions in GitHub Actions",
-      "matchPaths": [".github/workflows/ci.yml"],
-      "matchStrings": ["- \"(?<currentValue>3\\.[0-9]+)\""],
-      "datasourceTemplate": "docker",
-      "depNameTemplate": "python",
-      "versioningTemplate": "pep440"
     }
   ],
   "regexManagers": [
     {
-      "fileMatch": ["^.github/workflows/ci\\.yml$"],
+      "fileMatch": ["\\.github/workflows/[^/]*\\.ya?ml$"],
       "matchStrings": [
-        "python-version:\\s*\\n(?:\\s+- \"(?<currentValue>\\d+\\.\\d+)\"\\n)*"
+        "\\s+- \"(?<currentValue>3\\.[0-9]+)\""
       ],
-      "depNameTemplate": "python",
       "datasourceTemplate": "docker",
-      "versioningTemplate": "pep440"
+      "depNameTemplate": "python",
+      "versioningTemplate": "pep440",
+      "extractVersionTemplate": "^(?<version>\\d+\\.\\d+\\.\\d+)$"
     }
   ],
   "platformAutomerge": true

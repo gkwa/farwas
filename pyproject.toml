@@ -8,6 +8,8 @@ version = "0.1.0"
 authors = []
 description = "GitHub repository lister"
 requires-python = ">=3.9"
+homepage = "https://github.com/gkwa/farwas"
+
 dependencies = [
     "zoneinfo; python_version < '3.9'",
     "tzdata; platform_system == 'Windows'"

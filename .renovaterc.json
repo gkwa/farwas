@@ -13,9 +13,7 @@
   "regexManagers": [
     {
       "fileMatch": [".github/workflows/ci.yml"],
-      "matchStrings": [
-        "- \"(?<currentValue>\\d+\\.\\d+)\""
-      ],
+      "matchStrings": ["- \"(?<currentValue>\\d+\\.\\d+)\""],
       "depNameTemplate": "python",
       "datasourceTemplate": "docker",
       "versioningTemplate": "pep440",

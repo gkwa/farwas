@@ -3,7 +3,7 @@
   "extends": ["config:recommended"],
   "packageRules": [
     {
-      "matchDepTypes": [""],
+      "matchDepTypes": ["*"],
       "automerge": true,
       "automergeType": "branch",
       "automergeStrategy": "fast-forward",
@@ -27,5 +27,3 @@
   "rangeStrategy": "bump",
   "platformAutomerge": true
 }
-
-
